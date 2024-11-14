@@ -1,0 +1,218 @@
+{
+    "movies": [
+        {
+            "name": "Inception",
+            "genre": "Sci-Fi",
+            "release_year": 2010,
+            "creator": "Christopher Nolan"
+        },
+        {
+            "name": "The Matrix",
+            "genre": "Action",
+            "release_year": 1999,
+            "creator": "The Wachowskis"
+        },
+        {
+            "name": "Parasite",
+            "genre": "Drama",
+            "release_year": 2019,
+            "creator": "Bong Joon-ho"
+        },
+        {
+            "name": "The Godfather",
+            "genre": "Crime",
+            "release_year": 1972,
+            "creator": "Francis Ford Coppola"
+        },
+        {
+            "name": "Pulp Fiction",
+            "genre": "Crime",
+            "release_year": 1994,
+            "creator": "Quentin Tarantino"
+        },
+        {
+            "name": "Forrest Gump",
+            "genre": "Comedy",
+            "release_year": 1994,
+            "creator": "Robert Zemeckis"
+        },
+        {
+            "name": "Gladiator",
+            "genre": "Action",
+            "release_year": 2000,
+            "creator": "Ridley Scott"
+        },
+        {
+            "name": "The Dark Knight",
+            "genre": "Action",
+            "release_year": 2008,
+            "creator": "Christopher Nolan"
+        },
+        {
+            "name": "Fight Club",
+            "genre": "Drama",
+            "release_year": 1999,
+            "creator": "David Fincher"
+        },
+        {
+            "name": "Interstellar",
+            "genre": "Sci-Fi",
+            "release_year": 2014,
+            "creator": "Christopher Nolan"
+        }
+    ],
+    "tv_shows": [
+        {
+            "name": "Breaking Bad",
+            "genre": "Crime",
+            "release_year": 2008,
+            "creator": "Vince Gilligan",
+            "season": 5,
+            "series": 62
+        },
+        {
+            "name": "Game of Thrones",
+            "genre": "Fantasy",
+            "release_year": 2011,
+            "creator": "David Benioff & D.B. Weiss",
+            "season": 8,
+            "series": 73
+        },
+        {
+            "name": "Friends",
+            "genre": "Comedy",
+            "release_year": 1994,
+            "creator": "David Crane & Marta Kauffman",
+            "season": 10,
+            "series": 236
+        },
+        {
+            "name": "The Office",
+            "genre": "Comedy",
+            "release_year": 2005,
+            "creator": "Greg Daniels",
+            "season": 9,
+            "series": 201
+        },
+        {
+            "name": "Stranger Things",
+            "genre": "Sci-Fi",
+            "release_year": 2016,
+            "creator": "The Duffer Brothers",
+            "season": 4,
+            "series": 34
+        },
+        {
+            "name": "Sherlock",
+            "genre": "Mystery",
+            "release_year": 2010,
+            "creator": "Steven Moffat & Mark Gatiss",
+            "season": 4,
+            "series": 13
+        },
+        {
+            "name": "The Crown",
+            "genre": "Historical",
+            "release_year": 2016,
+            "creator": "Peter Morgan",
+            "season": 5,
+            "series": 50
+        },
+        {
+            "name": "House of Cards",
+            "genre": "Drama",
+            "release_year": 2013,
+            "creator": "Beau Willimon",
+            "season": 6,
+            "series": 73
+        },
+        {
+            "name": "Westworld",
+            "genre": "Sci-Fi",
+            "release_year": 2016,
+            "creator": "Jonathan Nolan & Lisa Joy",
+            "season": 4,
+            "series": 36
+        },
+        {
+            "name": "The Mandalorian",
+            "genre": "Sci-Fi",
+            "release_year": 2019,
+            "creator": "Jon Favreau",
+            "season": 3,
+            "series": 24
+        }
+    ],
+    "music": [
+        {
+            "name": "Thriller",
+            "genre": "Pop",
+            "release_year": 1982,
+            "creator": "Michael Jackson",
+            "album": "Thriller"
+        },
+        {
+            "name": "Back in Black",
+            "genre": "Rock",
+            "release_year": 1980,
+            "creator": "AC/DC",
+            "album": "Back in Black"
+        },
+        {
+            "name": "The Dark Side of the Moon",
+            "genre": "Rock",
+            "release_year": 1973,
+            "creator": "Pink Floyd",
+            "album": "The Dark Side of the Moon"
+        },
+        {
+            "name": "Abbey Road",
+            "genre": "Rock",
+            "release_year": 1969,
+            "creator": "The Beatles",
+            "album": "Abbey Road"
+        },
+        {
+            "name": "Hotel California",
+            "genre": "Rock",
+            "release_year": 1976,
+            "creator": "Eagles",
+            "album": "Hotel California"
+        },
+        {
+            "name": "Rumors",
+            "genre": "Rock",
+            "release_year": 1977,
+            "creator": "Fleetwood Mac",
+            "album": "Rumors"
+        },
+        {
+            "name": "Born to Run",
+            "genre": "Rock",
+            "release_year": 1975,
+            "creator": "Bruce Springsteen",
+            "album": "Born to Run"
+        },
+        {
+            "name": "Like a Virgin",
+            "genre": "Pop",
+            "release_year": 1984,
+            "creator": "Madonna",
+            "album": "Like a Virgin"
+        },
+        {
+            "name": "Nevermind",
+            "genre": "Rock",
+            "release_year": 1991,
+            "creator": "Nirvana",
+            "album": "Nevermind"
+        },
+        {
+            "name": "Kind of Blue",
+            "genre": "Jazz",
+            "release_year": 1959,
+            "creator": "Miles Davis",
+            "album": "Kind of Blue"
+        }
+    ]
+}
