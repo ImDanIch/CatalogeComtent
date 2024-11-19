@@ -9,7 +9,6 @@ def save_data(catalog):
         'music': [],
     }
 
-    # Обрабатываем список фильмов
     for movie in catalog[0]:
         movie_dict = movie.to_dict()
         data['movies'].append(movie_dict)
