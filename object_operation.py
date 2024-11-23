@@ -12,51 +12,13 @@ class CatalogManager:
         self.music_genres = music_genres
         self.ui = UserInterface()
 
-    def validate_year(self, value, current_year):
-        if value.isdigit():
-            year = int(value)
-            return 1400 <= year <= current_year
-        return False
-
-    def validate_positive_number(self, value):
-        return value.isdigit() and int(value) > 0
-
-    def get_valid_input(self, prompt, validation_function, error_message, *args):
-        while True:
-            value = self.ui.handle_user_interaction('input', prompt)
-            if validation_function(value, *args):
-                return value
-            self.ui.handle_user_interaction('error', error_message)
-
-    def select_item_from_list(self, items, prompt):
-        if not items:
-            self.ui.handle_user_interaction('output', "No items available.")
-            return None
-
-        self.ui.handle_user_interaction('output', prompt)
-        for i, item in enumerate(items, start=1):
-            self.ui.handle_user_interaction('output', f"{i}: {item.name}")
-
-        while True:
-            try:
-                choice = int(self.ui.handle_user_interaction('input',
-                                                             "Enter the number of the item or 0 to go back: "))
-                if choice == 0:
-                    return None
-                if 1 <= choice <= len(items):
-                    return items[choice - 1]
-                else:
-                    self.ui.handle_user_interaction('error', "Invalid number. Please try again.")
-            except ValueError:
-                self.ui.handle_user_interaction('error', "Input must be a number. Please try again.")
-
     def add_content(self, category):
         current_year = datetime.now().year
         category_name = self.categories[category]
 
         name = self.ui.handle_user_interaction('input', f"Enter {category_name} name: ")
-        release_year = self.get_valid_input(
-            "Enter release year: ", self.validate_year,
+        release_year = self.ui.get_valid_input(
+            "Enter release year: ", self.ui.validate_year,
             f"Release year must be a number between 1400 and {current_year}.",
             current_year
         )
@@ -70,12 +32,12 @@ class CatalogManager:
 
         elif category_name == "TV show":
             genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
-            season = self.get_valid_input(
-                "Enter season: ", self.validate_positive_number,
+            season = self.ui.get_valid_input(
+                "Enter season: ", self.ui.validate_positive_number,
                 "Season must be a positive number."
             )
-            series = self.get_valid_input(
-                "Enter series: ", self.validate_positive_number,
+            series = self.ui.get_valid_input(
+                "Enter series: ", self.ui.validate_positive_number,
                 "Series must be a positive number."
             )
             return TVShow(name, genre, int(release_year), creator, int(season), int(series))
@@ -93,7 +55,7 @@ class CatalogManager:
             self.ui.handle_user_interaction('output', f"No items available in {category_name}.")
             return
 
-        item = self.select_item_from_list(items, f"Select an item to edit from {category_name}:")
+        item = self.ui.select_item_from_list(items, f"Select an item to edit from {category_name}:")
         if not item:
             return
 
@@ -115,7 +77,7 @@ class CatalogManager:
         category -= 1
         category_name = self.categories[category+1]
         items = self.catalog[category]
-        item = self.select_item_from_list(items, f"Select an item to remove from {category_name}:")
+        item = self.ui.select_item_from_list(items, f"Select an item to remove from {category_name}:")
 
         if not item:
             return False
