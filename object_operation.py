@@ -63,7 +63,8 @@ class CatalogManager:
         creator = self.ui.handle_user_interaction('input', "Enter creator: ")
 
         if category_name == "Music":
-            genre = self.music_genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.music_genres))
+            genre = self.music_genres.get(self.ui.handle_user_interaction('choice',
+                                                                          "Choose a genre:", self.music_genres))
             album = self.ui.handle_user_interaction('input', "Enter album: ")
             return Music(name, genre, int(release_year), creator, album)
 
@@ -79,7 +80,7 @@ class CatalogManager:
             )
             return TVShow(name, genre, int(release_year), creator, int(season), int(series))
 
-        else:  # For Movies
+        else:
             genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
             return Movie(name, genre, int(release_year), creator)
 
