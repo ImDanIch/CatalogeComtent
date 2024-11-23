@@ -7,7 +7,7 @@ from command_handler import CommandHandler
 def main():
     catalog = load_data()
     ui = UserInterface()
-    handler = CommandHandler(catalog, ui, commands, categories, genres, music_genres, attributes)
+    handler = CommandHandler(catalog, ui, categories, genres, music_genres, attributes)
 
     while True:
         try:
@@ -19,4 +19,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

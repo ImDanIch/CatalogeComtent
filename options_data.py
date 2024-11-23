@@ -22,6 +22,13 @@ attributes = {
     4: "Creator"
 }
 
+ATTRIBUTE_MAP = {
+    1: 'name',
+    2: 'genre',
+    3: 'release_year',
+    4: 'creator'
+}
+
 genres = {
     1: "Action",
     2: "Adventure",
