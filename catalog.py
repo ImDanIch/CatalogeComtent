@@ -6,7 +6,7 @@ class MediaContent:
         self.creator = creator
 
     def __str__(self):
-        return f"{self.name} ({self.release_year}, Genre: {self.genre}, Creator: {self.creator})"
+        return f"{self.name} ({self.release_year}), Genre: {self.genre}, Creator: {self.creator}"
 
     def to_dict(self):
         return {
