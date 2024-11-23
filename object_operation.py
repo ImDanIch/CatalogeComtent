@@ -35,11 +35,12 @@ class CatalogManager:
 
         self.ui.handle_user_interaction('output', prompt)
         for i, item in enumerate(items, start=1):
-            self.ui.handle_user_interaction('output', f"{i}: {item.name}")  # Выводим название элемента
+            self.ui.handle_user_interaction('output', f"{i}: {item.name}")
 
         while True:
             try:
-                choice = int(self.ui.handle_user_interaction('input', "Enter the number of the item or 0 to go back: "))
+                choice = int(self.ui.handle_user_interaction('input',
+                                                             "Enter the number of the item or 0 to go back: "))
                 if choice == 0:
                     return None
                 if 1 <= choice <= len(items):
