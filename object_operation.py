@@ -12,7 +12,7 @@ class CatalogManager:
         self.music_genres = music_genres
         self.ui = UserInterface()
 
-    def add_content(self, category):
+    def add(self, category):
         current_year = datetime.now().year
         category_name = self.categories[category]
 
@@ -46,7 +46,8 @@ class CatalogManager:
             genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
             return Movie(name, genre, int(release_year), creator)
 
-    def edit_content(self, category):
+    def edit(self, category):
+        current_year = datetime.now().year
         category -= 1
         category_name = self.categories[category+1]
         items = self.catalog[category]
@@ -62,7 +63,12 @@ class CatalogManager:
         self.ui.handle_user_interaction('output', f"Editing '{item.name}':")
         item.name = self.ui.handle_user_interaction('input', "Enter new name: ") or item.name
         item.genre = self.ui.handle_user_interaction('input', "Enter new genre: ") or item.genre
-        item.release_year = int(self.ui.handle_user_interaction('input', "Enter new release year: ") or item.release_year)
+        item.release_year = self.ui.get_valid_input(
+            "Enter release year: ", self.ui.validate_year,
+            f"Release year must be a number between 1400 and {current_year}.",
+            current_year
+            or item.release_year
+        )
         item.creator = self.ui.handle_user_interaction('input', "Enter new creator: ") or item.creator
 
         if isinstance(item, TVShow):
@@ -73,7 +79,7 @@ class CatalogManager:
 
         self.ui.handle_user_interaction('output', "Item updated successfully.")
 
-    def remove_content(self, category):
+    def remove(self, category):
         category -= 1
         category_name = self.categories[category+1]
         items = self.catalog[category]
@@ -92,7 +98,7 @@ class CatalogManager:
             self.ui.handle_user_interaction('output', "Deletion canceled.")
             return False
 
-    def search_content(self, category, attribute, search_value):
+    def search(self, category, attribute, search_value):
         attribute_name = ATTRIBUTE_MAP.get(attribute)
         category -= 1
 
@@ -119,7 +125,7 @@ class CatalogManager:
 
         return found_items
 
-    def display_catalog(self):
+    def display(self):
         self.ui.handle_user_interaction('output', "\nMovies:")
         for movie in self.catalog[0]:
             self.ui.handle_user_interaction('output', str(movie))

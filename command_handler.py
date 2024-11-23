@@ -32,7 +32,7 @@ class CommandHandler:
         category = self.ui.handle_user_interaction('choice', "\nSelect a category:", self.categories)
         if category is None:
             return
-        content = self.catalog_manager.add_content(category)
+        content = self.catalog_manager.add(category)
         if content:
             self.catalog[category].append(content)
 
@@ -40,13 +40,13 @@ class CommandHandler:
         category = self.ui.handle_user_interaction('choice', "\nSelect a category to edit:", self.categories)
         if category is None:
             return
-        self.catalog_manager.edit_content(category)
+        self.catalog_manager.edit(category)
 
     def remove_content(self):
         category = self.ui.handle_user_interaction('choice', "\nSelect a category to remove from:", self.categories)
         if category is None:
             return
-        self.catalog_manager.remove_content(category)
+        self.catalog_manager.remove(category)
 
     def search_content(self):
         category = self.ui.handle_user_interaction('choice', "\nSelect a category to search:", self.categories)
@@ -60,7 +60,7 @@ class CommandHandler:
         search_value = self.ui.handle_user_interaction('input',
                                                        f"\nEnter the {self.attributes[attribute]} to search for: ")
 
-        found_items = self.catalog_manager.search_content(category, attribute, search_value)
+        found_items = self.catalog_manager.search(category, attribute, search_value)
 
         if found_items:
             self.ui.handle_user_interaction('output', "\nFound items:")
@@ -71,7 +71,7 @@ class CommandHandler:
                                             f"\nNo items found with {self.attributes[attribute]} = '{search_value}'.")
 
     def display_catalog(self):
-        self.catalog_manager.display_catalog()
+        self.catalog_manager.display()
 
     def exit_program(self):
         save_data(self.catalog)
