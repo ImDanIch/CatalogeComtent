@@ -1,5 +1,4 @@
-# Project Title
-Multimedia Content Catalog
+# Multimedia Content Catalog
 
 ## Project Description
 This software is designed to manage a multimedia content catalog, allowing users to add, edit, delete, and search for information about movies, TV shows, and music. The application is built as a console-based program, following a modular approach, and supports data storage in a JSON file.
