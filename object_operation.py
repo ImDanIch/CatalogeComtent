@@ -16,7 +16,7 @@ class CatalogManager:
         current_year = datetime.now().year
         category_name = self.categories[category]
 
-        name = self.ui.handle_user_interaction('input', f"Enter {category_name} name: ")
+        name = self.ui.handle_user_interaction('input', f"Enter name: ")
         release_year = self.ui.get_valid_input(
             "Enter release year: ", self.ui.validate_year,
             f"Release year must be a number between 1400 and {current_year}.",
@@ -24,13 +24,13 @@ class CatalogManager:
         )
         creator = self.ui.handle_user_interaction('input', "Enter creator: ")
 
-        if category_name == "Music":
+        if category == 2:
             genre = self.music_genres.get(self.ui.handle_user_interaction('choice',
                                                                           "Choose a genre:", self.music_genres))
             album = self.ui.handle_user_interaction('input', "Enter album: ")
             return Music(name, genre, int(release_year), creator, album)
 
-        elif category_name == "TV show":
+        elif category == 1:
             genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
             season = self.ui.get_valid_input(
                 "Enter season: ",

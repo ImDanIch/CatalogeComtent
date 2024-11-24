@@ -32,6 +32,7 @@ class CommandHandler:
         category = self.ui.handle_user_interaction('choice', "\nSelect a category:", self.categories)
         if category is None:
             return
+        category -= 1
         content = self.catalog_manager.add(category)
         if content:
             self.catalog[category].append(content)
