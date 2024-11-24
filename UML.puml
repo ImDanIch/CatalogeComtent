@@ -60,7 +60,6 @@ MediaContent <|-- TVShow
 MediaContent <|-- Music
 
 CommandHandler --> CatalogManager
-CommandHandler --> UserInterface
 
 UserInterface --> CatalogManager
 UserInterface --> CommandHandler
