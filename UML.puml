@@ -1,0 +1,72 @@
+@startuml
+
+class MediaContent {
+    +name: str
+    +genre: str
+    +release_year: int
+    +creator: str
+    +__init__(name: str, genre: str, release_year: int, creator: str)
+    +__str__(): str
+    +to_dict(): dict
+}
+
+class Movie {
+    +__init__(name: str, genre: str, release_year: int, creator: str)
+    +__str__(): str
+}
+
+class TVShow {
+    +__init__(name: str, genre: str, release_year: int, creator: str, season: int, series: int)
+    +__str__(): str
+    +to_dict(): dict
+}
+
+class Music {
+    +__init__(name: str, genre: str, release_year: int, creator: str, album: str)
+    +__str__(): str
+    +to_dict(): dict
+}
+
+class CommandHandler {
+    +__init__(catalog, ui, categories, genres, music_genres, attributes)
+    +execute_command(command: int)
+    +add_content()
+    +edit_content()
+    +remove_content()
+    +search_content()
+    +display_catalog()
+    +exit_program()
+}
+
+class CatalogManager {
+    +__init__(catalog, categories, genres, music_genres)
+    +add(category)
+    +edit(category)
+    +remove(category)
+    +search(category, attribute, search_value)
+    +display()
+}
+
+class UserInterface {
+    +handle_user_interaction(action: str, message: str, options: dict = None)
+    +validate_year(value: str, current_year: int)
+    +validate_positive_number(value: str)
+    +get_valid_input(prompt: str, validation_function: callable, error_message: str, *args)
+    +select_item_from_list(items: list, prompt: str)
+}
+
+MediaContent <|-- Movie
+MediaContent <|-- TVShow
+MediaContent <|-- Music
+
+CommandHandler --> CatalogManager
+CommandHandler --> UserInterface
+
+UserInterface --> CatalogManager
+UserInterface --> CommandHandler
+
+CatalogManager --> Movie
+CatalogManager --> TVShow
+CatalogManager --> Music
+
+@enduml

@@ -33,8 +33,8 @@ class CatalogManager:
         elif category_name == "TV show":
             genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
             season = self.ui.get_valid_input(
-                "Enter season: ", self.ui.validate_positive_number,
-                "Season must be a positive number."
+                "Enter season: ",
+                self.ui.validate_positive_number,"Season must be a positive number."
             )
             series = self.ui.get_valid_input(
                 "Enter series: ", self.ui.validate_positive_number,
@@ -43,7 +43,8 @@ class CatalogManager:
             return TVShow(name, genre, int(release_year), creator, int(season), int(series))
 
         else:
-            genre = self.genres.get(self.ui.handle_user_interaction('choice', "Choose a genre:", self.genres))
+            genre = self.genres.get(self.ui.handle_user_interaction(
+                'choice', "Choose a genre:", self.genres))
             return Movie(name, genre, int(release_year), creator)
 
     def edit(self, category):
@@ -72,8 +73,12 @@ class CatalogManager:
         item.creator = self.ui.handle_user_interaction('input', "Enter new creator: ") or item.creator
 
         if isinstance(item, TVShow):
-            item.season = int(self.ui.handle_user_interaction('input', "Enter new season: ") or item.season)
-            item.series = int(self.ui.handle_user_interaction('input', "Enter new series: ") or item.series)
+            item.season = int(self.ui.handle_user_interaction(
+                'input',
+                "Enter new season: ") or item.season)
+            item.series = int(self.ui.handle_user_interaction(
+                'input',
+                "Enter new series: ") or item.series)
         elif isinstance(item, Music):
             item.album = self.ui.handle_user_interaction('input', "Enter new album: ") or item.album
 
@@ -88,8 +93,10 @@ class CatalogManager:
         if not item:
             return False
 
-        confirmation = self.ui.handle_user_interaction('input',
-                                                      f"Are you sure you want to delete '{item.name}'? (y/n): ").lower()
+        confirmation = self.ui.handle_user_interaction(
+            'input',
+            f"Are you sure you want to delete '{item.name}'? (y/n): "
+        ).lower()
         if confirmation == 'y':
             self.catalog[category].remove(item)
             self.ui.handle_user_interaction('output', "Item removed successfully.")
