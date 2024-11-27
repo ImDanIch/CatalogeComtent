@@ -48,11 +48,14 @@ class CatalogManager {
 }
 
 class UserInterface {
-    +handle_user_interaction(action: str, message: str, options: dict = None)
-    +validate_year(value: str, current_year: int)
-    +validate_positive_number(value: str)
-    +get_valid_input(prompt: str, validation_function: callable, error_message: str, *args)
-    +select_item_from_list(items: list, prompt: str)
+    +get_user_input()
+    +console_output()
+    +console_output_error()
+    +get_user_choice()
+    +validate_year()
+    +validate_positive_number()
+    +get_valid_input()
+    +select_item_from_list()
 }
 
 MediaContent <|-- Movie

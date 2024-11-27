@@ -1,6 +1,6 @@
 import unittest
 from catalog import Movie, TVShow
-from object_operation import CatalogManager
+from catalog_manager import CatalogManager
 
 
 class TestCatalogManager(unittest.TestCase):

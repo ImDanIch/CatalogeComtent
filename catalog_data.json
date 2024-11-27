@@ -61,10 +61,10 @@
             "creator": "Christopher Nolan"
         },
         {
-            "name": "dhbn",
-            "genre": "Action",
-            "release_year": 2020,
-            "creator": "ahg"
+            "name": "Duna. Part 2",
+            "genre": "Sci-Fi",
+            "release_year": 2024,
+            "creator": "Denis Villeneuve"
         }
     ],
     "tv_shows": [
@@ -147,6 +147,14 @@
             "creator": "Jon Favreau",
             "season": 3,
             "series": 24
+        },
+        {
+            "name": "hvf",
+            "genre": "Musical",
+            "release_year": 2020,
+            "creator": "j",
+            "season": 1,
+            "series": 12
         }
     ],
     "music": [

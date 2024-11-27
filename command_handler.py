@@ -1,4 +1,4 @@
-from object_operation import CatalogManager
+from catalog_manager import CatalogManager
 from file_manager import save_data
 
 
@@ -19,62 +19,60 @@ class CommandHandler:
             3: self.remove_content,
             4: self.search_content,
             5: self.display_catalog,
-            None: self.exit_program,
+            0: self.exit_program,
         }
 
         action = actions.get(command)
         if action:
             action()
         else:
-            self.ui.handle_user_interaction('error', "\nInvalid command. Please try again.")
+            self.ui.console_output_error("\nInvalid command. Please try again.")
 
     def add_content(self):
-        category = self.ui.handle_user_interaction('choice', "\nSelect a category:", self.categories)
+        category = self.ui.get_user_choice("\nSelect a category:", self.categories)
         if category is None:
             return
         category -= 1
         content = self.catalog_manager.add(category)
         if content:
             self.catalog[category].append(content)
+            self.ui.console_output("Content added successfully.")
 
     def edit_content(self):
-        category = self.ui.handle_user_interaction('choice', "\nSelect a category to edit:", self.categories)
+        category = self.ui.get_user_choice("\nSelect a category to edit:", self.categories)
         if category is None:
             return
-        self.catalog_manager.edit(category)
+        self.catalog_manager.edit(category - 1)
 
     def remove_content(self):
-        category = self.ui.handle_user_interaction('choice', "\nSelect a category to remove from:", self.categories)
+        category = self.ui.get_user_choice("\nSelect a category to remove from:", self.categories)
         if category is None:
             return
-        self.catalog_manager.remove(category)
+        self.catalog_manager.remove(category - 1)
 
     def search_content(self):
-        category = self.ui.handle_user_interaction('choice', "\nSelect a category to search:", self.categories)
+        category = self.ui.get_user_choice("\nSelect a category to search:", self.categories)
         if category is None:
             return
 
-        attribute = self.ui.handle_user_interaction('choice', "\nSelect an attribute to search by:", self.attributes)
+        attribute = self.ui.get_user_choice("\nSelect an attribute to search by:", self.attributes)
         if attribute is None:
             return
 
-        search_value = self.ui.handle_user_interaction('input',
-                                                       f"\nEnter the {self.attributes[attribute]} to search for: ")
-
-        found_items = self.catalog_manager.search(category, attribute, search_value)
+        search_value = self.ui.get_user_input(f"\nEnter the {self.attributes[attribute]} to search for: ")
+        found_items = self.catalog_manager.search(category - 1, attribute, search_value)
 
         if found_items:
-            self.ui.handle_user_interaction('output', "\nFound items:")
+            self.ui.console_output("\nFound items:")
             for item in found_items:
-                self.ui.handle_user_interaction('output', str(item))
+                self.ui.console_output(str(item))
         else:
-            self.ui.handle_user_interaction('output',
-                                            f"\nNo items found with {self.attributes[attribute]} = '{search_value}'.")
+            self.ui.console_output(f"\nNo items found with {self.attributes[attribute]} = '{search_value}'.")
 
     def display_catalog(self):
         self.catalog_manager.display()
 
     def exit_program(self):
         save_data(self.catalog)
-        self.ui.handle_user_interaction('output', "\nData saved. Exiting program.")
+        self.ui.console_output("\nData saved. Exiting program.")
         exit()
